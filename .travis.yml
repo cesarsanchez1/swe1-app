@@ -1,0 +1,35 @@
+language: python
+python:
+  - "3.11"
+
+# Make sure pip and setuptools are up to date
+before_install:
+  - pip install --upgrade pip setuptools wheel
+
+# Install dependencies from requirements.txt
+install:
+  - pip install -r requirements.txt
+
+# Run linting, formatting check, and tests
+script:
+  - black --check .
+  - flake8 .
+  - coverage run -m pytest
+
+# Report test coverage to coveralls
+after_success:
+  - coverage report
+  - pip install coveralls
+  - coveralls
+
+# Deploy to AWS Elastic Beanstalk after successful build
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: "us-east-2"
+  app: "djangotutorial_1"          # ✅ your actual AWS EB app name
+  env: "djangotutorial-env"        # ✅ your actual AWS EB environment name
+  bucket_name: "elasticbeanstalk-us-east-2-XXXXXXXXXXXX"  # ✅ replace with your S3 bucket name
+  on:
+    branch: main
