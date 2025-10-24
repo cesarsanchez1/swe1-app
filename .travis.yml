@@ -34,6 +34,6 @@ deploy:
   region: "us-east-2"
   app: "djangotutorial_1"          # ✅ your actual AWS EB app name
   env: "djangotutorial-env"        # ✅ your actual AWS EB environment name
-  bucket_name: "elasticbeanstalk-us-east-2-XXXXXXXXXXXX"  # ✅ replace with your S3 bucket name
+  bucket_name: "elasticbeanstalk-us-east-2-449512121000"  # ✅ replace with your S3 bucket name
   on:
     branch: main
