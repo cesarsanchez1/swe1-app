@@ -2,6 +2,10 @@ language: python
 python:
   - "3.11"
 
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE=mysite.settings
+
 # Make sure pip and setuptools are up to date
 before_install:
   - pip install --upgrade pip setuptools wheel
