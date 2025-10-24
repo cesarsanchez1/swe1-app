@@ -16,8 +16,8 @@ install:
 
 # Run linting, formatting check, and tests
 script:
-  #- black --check .
-  #- flake8 .
+  - black --check .
+  - flake8 .
   - coverage run -m pytest
 
 # Report test coverage to coveralls
